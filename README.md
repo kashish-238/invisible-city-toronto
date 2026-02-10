@@ -46,13 +46,13 @@ Weighted blend of the 3 metrics → `equity_score_v2 (0–100)`
 ## 📸 Screenshots
 
 ### Equity v2 Overview
-![Equity v2](docs/screenshots/01-equity-v2.png)
+![Equity v2](docs/screenshots/01-equity-v2.jpeg)
 
 ### Transit Overlays (Heatmap + Dead Zones)
-![Transit overlays](docs/screenshots/02-heatmap-deadzones.png)
+![Transit overlays](docs/screenshots/02-heatmap-deadzones.jpeg)
 
 ### Neighbourhood Detail View
-![Neighbourhood detail](docs/screenshots/03-neighbourhood-detail.png)
+![Neighbourhood detail](docs/screenshots/03-neighbourhood-detail.jpeg)
 
 ---
 
