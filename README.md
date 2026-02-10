@@ -1,106 +1,91 @@
-\# Invisible City: Toronto 🌍
-
-\*\*Built by Sahil Patel\*\*  
-
+# Invisible City: Toronto 🌍  
+**Built by Sahil Patel**  
 An interactive urban equity map for Toronto that reveals “invisible” access gaps across neighbourhoods.
 
-
-
-🔗 \*\*Live Demo:\*\* https://YOUR-VERCEL-URL.vercel.app  
-
-📦 \*\*Repo:\*\* https://github.com/kashish-238/invisible-city-toronto
-
-
+🔗 **Live Demo:** https://invisible-city-toronto.vercel.app/  
+📦 **GitHub Repo:** https://github.com/kashish-238/invisible-city-toronto  
 
 ---
 
+## ✨ What this project does
 
+**Invisible City: Toronto** visualizes neighbourhood-level inequality using a clean, professor-friendly storytelling UI.
 
-\## What this project does
+It helps answer:
 
-Invisible City: Toronto visualizes neighbourhood-level access using a clean, professor-friendly storytelling UI.
-
-
-
-\### Current Layers (MVP+)
-
-\- \*\*Transit Access (TTC)\*\* — distance to nearest TTC stop → `transit\_score (0–100)`
-
-\- \*\*Food Access (OSM)\*\* — distance to nearest grocery/food location → `food\_score (0–100)`
-
-\- \*\*Essential Services (OSM)\*\* — distance to clinics/hospitals/community centres → `access\_score (0–100)`
-
-\- \*\*Equity Score v2\*\* — weighted blend of the 3 metrics → `equity\_score\_v2 (0–100)`
-
-
-
-\### Visual Overlays
-
-\- \*\*Stop Density Heatmap\*\* — identifies where transit stops cluster
-
-\- \*\*Transit Dead Zone Dots\*\* — highlights neighbourhoods with large distance to nearest stop
-
-
+- Which neighbourhoods are underserved by transit?
+- Where are food deserts located?
+- Which areas lack access to essential services?
+- What does overall urban equity look like?
 
 ---
 
+## ✅ Current Layers (MVP+)
 
+### 🚇 Transit Access (TTC)
+Distance to the nearest TTC stop → `transit_score (0–100)`
 
-\## Screenshots
+### 🥗 Food Access (OSM)
+Distance to the nearest grocery/food location → `food_score (0–100)`
 
-\### Equity v2 Overview
+### 🏥 Essential Services Access (OSM)
+Distance to clinics/hospitals/community centres → `access_score (0–100)`
 
-!\[Equity v2](docs/screenshots/01-equity-v2.png)
-
-
-
-\### Transit Overlays (Heatmap + Dead Zones)
-
-!\[Transit overlays](docs/screenshots/02-heatmap-deadzones.png)
-
-
-
-\### Neighbourhood Detail (Sidebar story)
-
-!\[Neighbourhood detail](docs/screenshots/03-neighbourhood-detail.png)
-
-
+### 🌍 Equity Score v2
+Weighted blend of the 3 metrics → `equity_score_v2 (0–100)`
 
 ---
 
+## 🔥 Visual Overlays
 
-
-\## Tech Stack
-
-\- \*\*Frontend:\*\* React + Vite + MapLibre GL
-
-\- \*\*Spatial/Data:\*\* Python (GeoPandas, Shapely, STRtree)
-
-\- \*\*Sources:\*\* TTC GTFS (surface) + OpenStreetMap Overpass
-
-\- \*\*Deployment:\*\* Vercel
-
-
+- **Stop Density Heatmap** — identifies transit clustering
+- **Transit Dead Zone Dots** — highlights neighbourhoods far from transit access
 
 ---
 
+## 📸 Screenshots
 
+### Equity v2 Overview
+![Equity v2](docs/screenshots/01-equity-v2.png)
 
-\## How scoring works (high level)
+### Transit Overlays (Heatmap + Dead Zones)
+![Transit overlays](docs/screenshots/02-heatmap-deadzones.png)
 
-Each layer computes distance from a neighbourhood representative point to the nearest relevant feature (stop/food/service).  
+### Neighbourhood Detail View
+![Neighbourhood detail](docs/screenshots/03-neighbourhood-detail.png)
 
-Distances are normalized into a \*\*0–100 score\*\* where \*\*higher is better\*\*.
+---
 
+## 🛠 Tech Stack
 
+- **Frontend:** React + Vite + MapLibre GL  
+- **Spatial/Data Pipeline:** Python (GeoPandas, Shapely, STRtree)  
+- **Transit Data:** TTC GTFS (surface feed)  
+- **Open Data:** OpenStreetMap Overpass API  
+- **Deployment:** Vercel  
 
-Equity v2 (default):
+---
+
+## 📊 How scoring works (high level)
+
+Each layer computes distance from a neighbourhood centroid to the nearest relevant feature:
+
+- TTC stop  
+- Food source  
+- Essential service  
+
+Distances are normalized into a **0–100 score**, where:
+
+✅ Higher = better access  
+❌ Lower = underserved
+
+Equity v2:
 equity_score_v2 = (transit_score + food_score + access_score) / 3
 
 
 ---
 
-## Run locally
+## 🚀 Run locally
 
 ### Frontend
 ```bash
@@ -109,7 +94,6 @@ npm install
 npm run dev
 
 Data pipeline (optional rebuild)
-# from project root (with your venv activated)
 python data_pipeline/fetch_food_osm.py
 python data_pipeline/compute_food_access.py
 
@@ -121,8 +105,9 @@ python data_pipeline/export_transit_stops_web.py
 
 python data_pipeline/compute_equity_v2.py
 
-Data attribution & licensing
+📜 Data attribution & licensing
 
-City of Toronto data: Contains information licensed under the Open Government Licence – Toronto
+City of Toronto data: Contains information licensed under the
+Open Government Licence – Toronto
 
 OpenStreetMap: © OpenStreetMap contributors
